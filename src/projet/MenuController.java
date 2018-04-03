@@ -7,7 +7,6 @@ package projet;
 
 import java.io.IOException;
 import java.net.URL;
-import javafx.stage.Stage;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -18,6 +17,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.stage.Stage;
 
 /**
  * FXML Controller class
@@ -34,21 +34,74 @@ public class MenuController extends Projet implements Initializable {
     @FXML private Button profil;
     @FXML private Button medDossier;
     @FXML private Button commande;
+   
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
-        medList.setOnAction((ActionEvent oui) -> {
-            Parent root;
-            try {
-                root = FXMLLoader.load(Projet.class.getResource("medList.fxml"));
-                Scene sceneMedList = new Scene(root);
-                primaryStage.setScene(sceneMedList);
-            } catch (IOException ex) {
-                Logger.getLogger(Projet.class.getName()).log(Level.SEVERE, null, ex);
-            }  
+        medDossier.setOnAction((ActionEvent dossier) -> {
+               sceneMedDossier();
         });
-    }  
+        
+        profil.setOnAction((ActionEvent profil) -> {
+               sceneProfil();
+        });
+        
+        medList.setOnAction((ActionEvent list) -> {
+            Parent rootList;
+            try {
+                rootList = FXMLLoader.load(MenuController.class.getResource("MedList.fxml"));
+                Scene sceneMedList = new Scene(rootList);
+                Stage stageMedList = new Stage();
+                stageMedList.setScene(sceneMedList);
+                stageMedList.show();
+            } catch (IOException ex) {
+                Logger.getLogger(MenuController.class.getName()).log(Level.SEVERE, null, ex);
+            }   
+        });
+        
+        commande.setOnAction((ActionEvent commande) -> {
+            Parent rootCommande;
+            try {
+                rootCommande = FXMLLoader.load(MenuController.class.getResource("Commande.fxml"));
+                Scene sceneCommande = new Scene(rootCommande);
+                Stage stageCommande = new Stage();
+                stageCommande.setScene(sceneCommande);
+                stageCommande.show();
+            } catch (IOException ex) {
+                Logger.getLogger(MenuController.class.getName()).log(Level.SEVERE, null, ex);
+            } 
+        });
+    }
+    
+    @FXML
+    public void sceneMedDossier() {
+        Parent rootDossier;
+            try {
+                rootDossier = FXMLLoader.load(MenuController.class.getResource("MedDossier.fxml"));
+                Scene sceneMedDossier = new Scene(rootDossier);
+                Stage stageMedDossier = new Stage();
+                stageMedDossier.setScene(sceneMedDossier);
+                stageMedDossier.show();
+            } catch (IOException ex) {
+                Logger.getLogger(MenuController.class.getName()).log(Level.SEVERE, null, ex);
+            }
+    }
+    
+    @FXML
+    public void sceneProfil() {
+        Parent rootProfil;
+            try {
+                rootProfil = FXMLLoader.load(MenuController.class.getResource("Profil.fxml"));
+                Scene sceneMedList = new Scene(rootProfil);
+                Stage stageProfil = new Stage();
+                stageProfil.setScene(sceneMedList);
+                stageProfil.show();
+            } catch (IOException ex) {
+                Logger.getLogger(MenuController.class.getName()).log(Level.SEVERE, null, ex);
+            }
+    }
+
 }
 
 

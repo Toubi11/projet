@@ -48,6 +48,14 @@ public class Projet extends Application {
             Logger.getLogger(Projet.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
+    
+    public Stage getStage(){
+        return primaryStage;
+    }
+    
+    public Stage setStage(){
+        return primaryStage;
+    }
 
     /**
      * @param args the command line arguments
